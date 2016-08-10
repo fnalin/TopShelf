@@ -1,0 +1,2 @@
+Achei ele no blog http://blog.albertomonteiro.net.br/2016/04/12/criando-windows-service-com-c-de-forma-facil/
+Página do projeto: http://topshelf-project.com/
