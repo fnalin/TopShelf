@@ -1,15 +1,16 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Topshelf;
 
 namespace DemoTopShelf
 {
-    public class ImplementacaoServico : ServiceControl
+    public class EmailServico : ServiceControl
     {
         private readonly CancellationTokenSource _cancellationTokenSource;
 
-        public ImplementacaoServico()
+        public EmailServico()
         {
             _cancellationTokenSource = new CancellationTokenSource();
         }
@@ -21,7 +22,10 @@ namespace DemoTopShelf
                 while (true)
                 {
                     Thread.Sleep(TimeSpan.FromSeconds(5));
-                    Console.WriteLine("It is {0} and all is well", DateTime.Now);
+                    var envio = new EnvioDeEmail();
+                    var destinatarios = new string[] { "xx@gmail.com", "xxxx@sawluz.com.br" };
+                    envio.EnviarMensagemAsync(destinatarios.ToList());
+                    Console.WriteLine($"E-mail disparado às {DateTime.Now}");
                 }
             }, _cancellationTokenSource.Token);
             return true;

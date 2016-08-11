@@ -8,9 +8,9 @@ namespace DemoTopShelf
         {
             HostFactory.Run(configurator =>
             {
-                configurator.Service<ImplementacaoServico>(s =>
+                configurator.Service<EmailServico>(s =>
                 {
-                    s.ConstructUsing(name => new ImplementacaoServico());
+                    s.ConstructUsing(name => new EmailServico());
                     s.WhenStarted((service, control) => service.Start(control));
                     s.WhenStopped((service, control) => service.Stop(control));
                 });
